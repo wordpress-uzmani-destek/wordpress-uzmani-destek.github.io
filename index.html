@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress Uzmanı | Profesyonel WordPress Hizmetleri</title>
+    <style>
+        /* Genel Stiller */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #21759b;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #fff;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #e6e6e6;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #21759b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #135e7c;
+        }
+        
+        /* Hizmetler */
+        .services {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #21759b;
+        }
+        
+        .service-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .service-item {
+            flex-basis: 30%;
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #21759b;
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: #21759b;
+            margin-bottom: 20px;
+        }
+        
+        /* Hakkımda */
+        .about {
+            padding: 80px 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-text {
+            flex-basis: 60%;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            color: #21759b;
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            flex-basis: 35%;
+        }
+        
+        .about-image img {
+            border-radius: 5px;
+            width: 100%;
+        }
+        
+        /* Referanslar */
+        .testimonials {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .testimonial-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .testimonial-item {
+            flex-basis: 48%;
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+        
+        .client-image img {
+            width: 100%;
+        }
+        
+        .client-details h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .client-details p {
+            color: #666;
+        }
+        
+        /* İletişim */
+        .contact {
+            padding: 80px 0;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #21759b;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .service-item, .testimonial-item {
+                flex-basis: 100%;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-image {
+                flex-basis: 100%;
+            }
+            
+            .about-image {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">WordPress <span>Uzmanı</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Ana Sayfa</a></li>
+                        <li><a href="#services">Hizmetler</a></li>
+                        <li><a href="#about">Hakkımda</a></li>
+                        <li><a href="#testimonials">Referanslar</a></li>
+                        <li><a href="#contact">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>WordPress Siteniz İçin Profesyonel Çözümler</h1>
+                <p>Özel tasarım, bakım, güvenlik ve SEO hizmetleriyle WordPress sitenizi bir üst seviyeye taşıyın.</p>
+                <a href="#contact" class="btn">Ücretsiz Danışmanlık</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hizmetler -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hizmetlerim</h2>
+            </div>
+            <div class="service-items">
+                <div class="service-item">
+                    <div class="service-icon">🎨</div>
+                    <h3>WordPress Tasarım</h3>
+                    <p>Marka kimliğinize uygun, kullanıcı dostu ve tamamen özelleştirilmiş WordPress siteleri tasarlıyorum.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔄</div>
+                    <h3>Site Bakım ve Destek</h3>
+                    <p>WordPress sitenizin güncel, hızlı ve güvenli kalması için düzenli bakım ve destek hizmetleri sağlıyorum.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔒</div>
+                    <h3>Güvenlik Çözümleri</h3>
+                    <p>WordPress sitenizi kötü niyetli saldırılara karşı korumak için kapsamlı güvenlik çözümleri sunuyorum.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🚀</div>
+                    <h3>Performans Optimizasyonu</h3>
+                    <p>WordPress sitenizin yüklenme hızını artırmak ve kullanıcı deneyimini iyileştirmek için performans optimizasyonu yapıyorum.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🔍</div>
+                    <h3>SEO Danışmanlığı</h3>
+                    <p>WordPress sitenizin arama motorlarında daha iyi sıralanması için SEO danışmanlığı hizmeti veriyorum.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🛒</div>
+                    <h3>WooCommerce Çözümleri</h3>
+                    <p>Online mağazanız için özelleştirilmiş WooCommerce çözümleri geliştiriyorum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hakkımda -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Hakkımda</h2>
+                    <p>10 yılı aşkın WordPress deneyimiyle, işletmenizin dijital varlığını güçlendirmenize yardımcı oluyorum. Binlerce işletmenin online başarıya ulaşmasına katkıda bulundum.</p>
+                    <p>WordPress core'a katkıda bulunan, çeşitli WordPress etkinliklerinde konuşmacı olarak yer alan ve sürekli kendini geliştiren bir uzman olarak, en güncel WordPress trendlerini ve teknolojilerini takip ediyorum.</p>
+                    <p>Amacım, işletmenizin ihtiyaçlarını anlamak ve bu ihtiyaçlara uygun, kullanıcı dostu ve etkili WordPress çözümleri sunmaktır.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/400/400" alt="WordPress Uzmanı" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referanslar -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Müşteri Yorumları</h2>
+            </div>
+            <div class="testimonial-items">
+                <div class="testimonial-item">
+                    <div class="testimonial-text">
+                        "WordPress uzmanımız sayesinde sitemiz hem daha hızlı çalışmaya başladı hem de arama motorlarında üst sıralara çıktı. Profesyonel yaklaşımı ve hızlı iletişimi için teşekkür ederiz."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-image">
+                            <img src="/api/placeholder/60/60" alt="Ahmet Yılmaz" />
+                        </div>
+                        <div class="client-details">
+                            <h4>Ahmet Yılmaz</h4>
+                            <p>Dijital Pazarlama Müdürü, XYZ Şirketi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-text">
+                        "E-ticaret sitemiz için özelleştirilmiş WooCommerce çözümü beklentilerimizin çok üzerindeydi. Satışlarımız %40 arttı ve müşteri geri bildirimleri çok olumlu."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-image">
+                            <img src="/api/placeholder/60/60" alt="Zeynep Kaya" />
+                        </div>
+                        <div class="client-details">
+                            <h4>Zeynep Kaya</h4>
+                            <p>Kurucu, ABC Butik</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-text">
+                        "WordPress sitemizin güvenlik açıklarını kapattı ve düzenli bakım hizmeti sayesinde hiçbir sorun yaşamıyoruz. Profesyonel ve güvenilir bir çözüm ortağı."
+                    </div>
+                    <div class="client-info">
+                        <div class="client-image">
+                            <img src="/api/placeholder/60/60" alt="Mehmet Demir" />
+                        </div>
+                        <div class="client-details">
+                            <h4>Mehmet Demir</h4>
+                            <p>IT Direktörü, DEF Holding</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-text">
+                        "Sitemizin tasarımını baştan sona yeniledi ve marka kimliğimizi dijital dünyaya mükemmel şekilde yansıttı. Harika iş için teşekkürler!"
+                    </div>
+                    <div class="client-info">
+                        <div class="client-image">
+                            <img src="/api/placeholder/60/60" alt="Ayşe Yıldız" />
+                        </div>
+                        <div class="client-details">
+                            <h4>Ayşe Yıldız</h4>
+                            <p>Pazarlama Direktörü, GHI Medya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İletişim -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>İletişim</h2>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Adınız Soyadınız</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta Adresiniz</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon Numaranız</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesajınız</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Gönder</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 WordPress Uzmanı. Tüm Hakları Saklıdır.</p>
+                <div class="social-links">
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Form gönderme işlemi
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Teşekkürler! Mesajınız alındı. En kısa sürede size dönüş yapacağız.');
+            this.reset();
+        });
+
+        // Sayfa içi yumuşak kaydırma
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
