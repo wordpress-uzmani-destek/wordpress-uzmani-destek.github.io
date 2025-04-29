@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Kod güncellemelerinde otomatik çalışması için
+  push:
+    branches: [ "main" ]
+  # Manuel olarak da çalıştırılabilir
+  workflow_dispatch:
+
+# İzinleri ayarlama - GitHub Pages'i dağıtmak için gerekli
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Aynı anda çalışan işleri engelleme
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Tek bir dağıtım işi
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Repository kök dizinindeki tüm dosyaları yükle
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
